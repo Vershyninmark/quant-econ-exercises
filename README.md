@@ -1,1 +1,1 @@
-# QuantEcon.Exercises
+# Repository for QuantEcon lecture exercises
