@@ -19,7 +19,10 @@
 
 \usepackage{fullpage}
 	% package that specifies normal margins
-	
+
+% Specifying user macros
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\Lagr}{\mathop{\mathcal{L}}}
 
 \begin{document}
 	% line of code telling latex that your document is beginning
@@ -62,8 +65,7 @@ Here:
 
 One way to solve this problem is to form the Lagrangian
 
-
-\[\mathcal L = - y' P y - u' Q u + \lambda' \left[A x + B u - y\right]\]
+\[\Lagr = - y' P y - u' Q u + \lambda' \left[A x + B u - y\right]\]
 
 
 where $\lambda$ is an $n \times 1$ vector of Lagrange multipliers
@@ -79,13 +81,75 @@ Show that these conditions imply that
 \end{flushleft}
 \section*{My Solution to Exercise 1}
 
-\paragraph{A)} Answer to Problem 1(A) here.
+\paragraph{1.}
+\begin{align}
+  \frac{ \partial \Lagr}{\partial y} & = \frac{ \partial (-y' P y)}{\partial y} - \frac{\partial \lambda' y}{\partial y} & = 0 \\
+  & = -(P + P')y - \lambda & = 0 \\
+  & = -2Py -\lambda & = 0 \\
+  \lambda & = -2Py
+\end{align}
+\setcounter{equation}{0}
 
-\subparagraph{i)} Answer to Problem 1(A)(i) here.
+\paragraph{2.}
+\begin{align}
+  \frac{\partial \Lagr}{\partial u} & = - \frac{\partial(u' Q u)}{\partial u} + \frac{\lambda' B u}{\partial u} & = 0 \\
+  & = -(Q +Q')u + (\lambda' B)' \\
+  & = -2 Q u + B' \lambda
+\end{align}
+Recall $\lambda = -2Py$
+\begin{align}
+  Q u & = -B' P y \\
+\end{align}
+Recall $y = A x + B u$
+\begin{align}
+  & = -B' P (A x + B u) \\
+  & = -B' P A x - B' P B u \\
+  Q u + B' P B u & = -B' P A x \\
+  (Q + B' P B)u & = -B' P A x \\
+  u & = -(Q + B' P B)^{-1} B' P A x
+\end{align}
+\setcounter{equation}{0}
 
-\subparagraph{ii)} Answer to Problem 1(A)(ii) here.
+\iffalse
+\begin{equation} \label{eq:1}
+  u = -(Q + B' P B)^{-1} B' P A x
+\end{equation}
 
-\subparagraph{iii)} Answer to Problem 1(A)(iii) here.
+\begin{equation} \label{eq:2}
+  y = A x + B u
+\end{equation}
+
+\begin{equation} \label{eq:3}
+  v(x) = -y' P y - u' Q u 
+\end{equation}
+\fi
+
+\paragraph{3.}
+Idea is to substitute in $u$ and $y$ into fucntion $v$
+\begin{align}
+  v(x) & = -y' P y - u' Q u \\
+  & = -(A x + B u)' P (A x + B u) - u' Q u
+\end{align}
+Let $u = - S x$
+\begin{align}
+  & = -(A x - B S x)' P (A x - B S x) - (S x )' Q S x \\
+  & = - \left[ ((A x)' - (B S x)')P(A x - B S x) + (x' S' Q S x) \right] \\
+  & = - \left[ (x' A' - x' S' B') (P A x - P B S x) + (x' S' Q S x) \right] \\
+  & = - \left[ x' A' P A x - x' S' B' P A x - x' A' P B S x + x' S' B' P B S x +  x' S' Q S x \right]
+\end{align}
+Note that $S' B' P A$ and $A' P B S$ are symmetric $n \times n$ matrices. $B' P B - Q$ is a symmetric $m \times m$ matrix.
+
+\begin{align}
+  & = - x' \left[ A' P A - S' B' P A - (A' P B S)' + S' (B' P B  +  Q)' S \right] x \\
+  & = - x' \left[ A' P A - 2 S' B' P A + S' ( Q + B' P B) S \right] x \\
+\end{align}
+Substitute back in $S = (Q + B' P B)^{-1} B' P A$
+\begin{align}
+  & = - x' \left[ A' P A - 2 (B' P A)'(Q + B' P B)^{-1}( B' P A) + (B' P A)' (Q + B' P B)^{-1} B' P A \right] x \\
+  & = - x' \underbrace{\left[ A' P A - A' P B (Q + B' P B)^{-1} B' P A \right]}_\text{$\tilde P$} x \\
+  & = - x' \tilde P x
+\end{align}
+
 
 \end{document}
 	% line of code telling latex that your document is ending. If you leave this out, you'll get an error
