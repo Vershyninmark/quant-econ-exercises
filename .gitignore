@@ -2,3 +2,4 @@
 *.aux
 PsetLatexTemplate.*
 .DS_Store
+*.*~
