@@ -35,6 +35,47 @@
 \maketitle 
 	% tells latex to follow your header (e.g., title, author) commands.
 
+\section*{Exercise 1}
+
+\begin{flushleft}
+Let $x$ be a given $n \times 1$ vector and consider the problem
+\end{flushleft}
+
+\[v(x) =  \max_{y,u} \left\{ - y'P y - u' Q u \right\}\]
+
+\begin{flushleft}
+subject to the linear constraint
+
+\end{flushleft}
+\[y = Ax + Bu\]
+
+\begin{flushleft}
+Here: 
+\end{flushleft}
+
+\begin{itemize}
+  \item $P$ is an $n \times n$ matrix and $Q$ is an $m \times m$ matrix
+  \item $A$ is an $n \times n$ matrix and $B$ is an $n \times m$ matrix
+  \item both $P$ and $Q$ are symmetric and positive semidefinite
+\end{itemize}
+
+\begin{flushleft}
+One way to solve this problem is to form the Lagrangian
+\end{flushleft}
+
+\[\mathcal L = - y' P y - u' Q u + \lambda' \left[A x + B u - y\right]\]
+
+\begin{flushleft}
+where $\lambda$ is an $n \times 1$ vector of Lagrange multipliers
+\newline
+Show that these conditions imply that
+\end{flushleft}
+
+\begin{enumerate}
+\item $\lambda = -2Py$
+\item The optimizing choice of $u$ satisfies $u = - (Q + B' P B)^{-1} B' P A x$
+\item The function $v$ satisfies $v(x) = - x' \tilde P x$ where $\tilde P = A' P A - A'P B (Q + B'P B)^{-1} B' P A$
+\end{enumerate}
 
 \section*{My Solution to Exercise 1}
 
