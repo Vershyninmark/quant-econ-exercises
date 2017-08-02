@@ -1,3 +1,4 @@
 *.log
 *.aux
 PsetLatexTemplate.*
+.DS_Store
